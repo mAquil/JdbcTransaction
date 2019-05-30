@@ -1,11 +1,11 @@
 package com.stackroute.spring.jdbc.main;
 
-import com.stackroute.spring.jdbc.model.Address;
-import com.stackroute.spring.jdbc.service.CustomerManagerImpl;
+import com.stackroute.spring.jdbc.model.Actor;
+import com.stackroute.spring.jdbc.model.Movie;
+import com.stackroute.spring.jdbc.service.MovieManagerImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.stackroute.spring.jdbc.model.Customer;
-import com.stackroute.spring.jdbc.service.CustomerManager;
+import com.stackroute.spring.jdbc.service.MovieManager;
 
 public class TransactionManagerMain {
 
@@ -13,26 +13,30 @@ public class TransactionManagerMain {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"spring.xml");
 
-		CustomerManager customerManager = ctx.getBean("customerManager",
-				CustomerManagerImpl.class);
+		MovieManager movieManager = ctx.getBean("movieManager",
+				MovieManagerImpl.class);
 
-		Customer cust = createDummyCustomer();
-		customerManager.createCustomer(cust);
+		Movie cust = createDummyCustomer();
+		movieManager.createMovie(cust);
 
 		ctx.close();
 	}
 
-	private static Customer createDummyCustomer() {
-		Customer customer = new Customer();
-		customer.setId(3);
-		customer.setName("Rutu");
-		Address address = new Address();
-		address.setId(3);
-		address.setCountry("India");
+	private static Movie createDummyCustomer() {
+		Movie movie = new Movie();
+		movie.setMovieName("Raazi");
+		movie.setMovieId(34);
+		movie.setReleaseYear(2016);
+		movie.setRating(4);
+		Actor actor = new Actor();
+		actor.setId(9);
+		actor.setName("akshay");
+		actor.setGender("male");
+		actor.setAge(52);
 		// setting value more than 20 chars, so that SQLException occurs
-		address.setAddress("Kormangala");
-		customer.setAddress(address);
-		return customer;
+
+		movie.setActor(actor);
+		return movie;
 	}
 
 }

@@ -1,28 +1,41 @@
 package com.stackroute.spring.jdbc.model;
 
-public class Customer {
+public class Actor {
 
 	private int id;
 	private String name;
-	private Address address;
-	
+	private String gender;
+	private int age;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Address getAddress() {
-		return address;
+
+	public String getGender() {
+		return gender;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
-	
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 }
